@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-"""goToWork - tkinter 原生桌面悬浮窗（ctypes系统托盘）"""
 import os
 import sys
 import json
@@ -373,13 +371,11 @@ class App:
         menu = tk.Menu(self.root, tearoff=0)
         menu.add_command(label="取消窗口置顶" if self._on_top else "窗口置顶",
                          command=self._toggle_top)
-        menu.add_command(label="允许拖动窗口" if self._locked else "锁定窗口位置",
+        menu.add_command(label="允许拖动" if self._locked else "锁定窗口",
                          command=self._toggle_lock)
         menu.add_separator()
         menu.add_command(label="设置", command=self._show_settings)
         menu.add_command(label="最小化", command=self._minimize)
-        menu.add_separator()
-        menu.add_command(label="退出", command=self._quit)
         try:
             menu.tk_popup(self.root.winfo_pointerx(), self.root.winfo_pointery())
         finally:
@@ -423,7 +419,7 @@ class App:
             label="窗口置顶" if not self._on_top else "取消窗口置顶",
             command=self._toggle_top)
         self._tray_menu.add_command(
-            label="锁定窗口位置" if not self._locked else "允许拖动窗口",
+            label="锁定窗口" if not self._locked else "允许拖动",
             command=self._toggle_lock)
         self._tray_menu.add_separator()
         self._tray_menu.add_command(
