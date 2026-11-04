@@ -368,18 +368,7 @@ class App:
         self._drag = None
 
     def on_close(self):
-        menu = tk.Menu(self.root, tearoff=0)
-        menu.add_command(label="取消窗口置顶" if self._on_top else "窗口置顶",
-                         command=self._toggle_top)
-        menu.add_command(label="允许拖动" if self._locked else "锁定窗口",
-                         command=self._toggle_lock)
-        menu.add_separator()
-        menu.add_command(label="设置", command=self._show_settings)
-        menu.add_command(label="最小化", command=self._minimize)
-        try:
-            menu.tk_popup(self.root.winfo_pointerx(), self.root.winfo_pointery())
-        finally:
-            menu.grab_release()
+        self._minimize()
 
     def _toggle_top(self):
         self._on_top = not self._on_top
