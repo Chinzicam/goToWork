@@ -415,7 +415,6 @@ class App:
             label="显示窗口" if not self.root.winfo_viewable() else "隐藏窗口",
             command=self._toggle_visible)
         self._tray_menu.add_command(label="设置", command=self._on_tray_settings)
-        self._tray_menu.add_command(label="最小化", command=self._minimize)
         self._tray_menu.add_separator()
         self._tray_menu.add_command(label="退出", command=self._quit)
         try:
